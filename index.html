@@ -164,10 +164,10 @@ const main = async () => {
     let secondItemUri = await replaceHttpWithHttps(resultList[randomNum].item2.value)
     
     iFrameTopCard.innerHTML = `
-        <iframe src="${firstItemUri}?action=render" sandbox="allow-same-origin allow-scripts" style="height: 100%; width: 100%;" title="Iframe Example"></iframe>
+        <iframe src="${firstItemUri}" sandbox="allow-same-origin allow-scripts" style="height: 100%; width: 100%;" title="Iframe Example"></iframe>
     `
     iFrameBottomCard.innerHTML = `
-        <iframe src="${secondItemUri}?action=render" sandbox="allow-same-origin allow-scripts" style="height: 100%; width: 100%;" title="Iframe Example"></iframe>
+        <iframe src="${secondItemUri}" sandbox="allow-same-origin allow-scripts" style="height: 100%; width: 100%;" title="Iframe Example"></iframe>
     `
 };
     
