@@ -160,8 +160,8 @@ const main = async () => {
     let resultList = data.results.bindings
     let randomNum = await getRandomInt(0, resultList.length)
     
-    let firstItemUri = await replaceHttpWithHttps(resultList[randomNum].item1.value)
-    let secondItemUri = await replaceHttpWithHttps(resultList[randomNum].item2.value)
+    let firstItemUri = "https://vicobncf.wikibase.cloud/wiki/Item:" + resultList[randomNum].item1.value.split("/").pop() //await replaceHttpWithHttps(resultList[randomNum].item1.value)
+    let secondItemUri = "https://vicobncf.wikibase.cloud/wiki/Item:" + resultList[randomNum].item2.value.split("/").pop()//await replaceHttpWithHttps(resultList[randomNum].item2.value)
     
     iFrameTopCard.innerHTML = `
         <iframe src="${firstItemUri}" style="height: 100%; width: 100%;" title="First Item"></iframe>
