@@ -4,4 +4,11 @@ const getRandomInt = async (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export { getRandomInt }
+const replaceHttpWithHttps = async (url) => {
+    if (url.startsWith("http://")) {
+      return url.replace("http://", "https://");
+    }
+    return url;
+}
+
+export { getRandomInt, replaceHttpWithHttps }
