@@ -145,7 +145,7 @@ const endpointUrl = 'https://vicobncf.wikibase.cloud/query/sparql';
 
 import { labelsMatchQuery } from "./js/sparql.js"
 import { vicoRequest } from "./js/vico.js"
-import { getRandomInt } from "./js/toolkit.js"
+import { getRandomInt, replaceHttpWithHttps } from "./js/toolkit.js"
 
 const modalElement = document.getElementById('statusModal');
 const iFrameTopCard = document.getElementById('iframe_top_card');
@@ -160,8 +160,8 @@ const main = async () => {
     let resultList = data.results.bindings
     let randomNum = await getRandomInt(0, resultList.length)
     
-    let firstItemUri = resultList[randomNum].item1.value
-    let secondItemUri = resultList[randomNum].item2.value
+    let firstItemUri = await replaceHttpWithHttps(resultList[randomNum].item1.value)
+    let secondItemUri = await replaceHttpWithHttps(resultList[randomNum].item2.value)
     
     iFrameTopCard.innerHTML = `
         <iframe src="${firstItemUri}?action=render" sandbox="allow-same-origin allow-scripts" style="height: 100%; width: 100%;" title="Iframe Example"></iframe>
